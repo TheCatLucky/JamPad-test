@@ -1,0 +1,14 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto";
+  font-size: 38px;
+  font-style: normal;
+  font-weight: normal;
+}
+.app-wrapper {
+  width: 1920px;
+  height: 1080px;
+}

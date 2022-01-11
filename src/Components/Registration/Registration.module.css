@@ -1,0 +1,167 @@
+.reg {
+  display: flex;
+  flex-direction: row;
+}
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 650px;
+  height: 1080px;
+  background: #1890ff;
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1270px;
+  height: 1080px;
+  background: #fafafa;
+}
+.logo {
+  width: 80px;
+  height: 80px;
+  margin-top: 313px;
+}
+.capitalIntro {
+  padding-top: 48px;
+  line-height: 46px;
+  font-weight: 500;
+  color: #ffffff;
+}
+.capitalAuth {
+  padding: 250px 0px 48px 0px;
+  line-height: 46px;
+  font-weight: 500;
+  color: #1890ff;
+}
+.firstP {
+  padding-top: 16px;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+  font-weight: 400;
+  color: #ffffff;
+}
+.secondP {
+  padding-top: 48px;
+  margin-bottom: 16px;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 400;
+  text-align: center;
+  color: #ffffff;
+  opacity: 0.5;
+}
+.lastP {
+  font-weight: 400px;
+  font-size: 12px;
+  line-height: 20px;
+  text-decoration: none;
+}
+.lastP a {
+  color: #1890ff
+}
+.pl8 {
+  padding-left: 8px;
+}
+.mt24 {
+  margin-top: 24px;
+}
+.mt8 {
+  margin-top: 8px;
+}
+.jam {
+  font-size: 24px;
+  font-weight: 500;
+}
+.inpitDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.inpitDivCol {
+  display: flex;
+  flex-direction: column;
+}
+.inpitDivRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.input {
+  width: 567px;
+  height: 56px;
+  /* background: red; */
+  background: #f5f5f5;
+  border-radius: 2px;
+  border: none;
+  padding-left: 16px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 22px;
+  color: rgba(0, 0, 0, 0.45);
+}
+.input::placeholder{
+  color: rgba(0, 0, 0, 0.45);
+}
+.name {
+  width: 200px;
+}
+.patronymic {
+  margin-left: 8px;
+  width: 359px;
+}
+.userImg {
+  width: 32px;
+  height: 32px;
+  margin-right: 17px;
+  margin-bottom: 7px;
+}
+.emailImg {
+  width: 38px;
+  height: 38px;
+  margin-right: 16px;
+  margin-bottom: 8px;
+}
+.passwordImg {
+  width: 34px;
+  height: 34px;
+  margin-top: 27px;
+  margin-left: 5px;
+  margin-right: 20px;
+}
+.create {
+  width: 224px;
+  height: 40px;
+  margin-top: 32px;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  background: #1890ff;
+  border: 2px solid white;
+}
+.enter {
+  width: 224px;
+  height: 40px;
+  margin-top: 47px;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  background: #1890ff;
+  border: none;
+}
+.checkbox{
+  width: 16px ;
+  height: 16px ;
+}
+.accept {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: -16px;
+  margin-right: 55px;
+}
