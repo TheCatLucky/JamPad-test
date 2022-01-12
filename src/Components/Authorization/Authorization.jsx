@@ -7,7 +7,8 @@ import email from "./../../Common/img/Email.svg"
 import logo from "./../../Common/img/LogoWhite.png"
 import password from "./../../Common/img/Password.svg"
 import style from "./Authorization.module.css"
-import { logIn } from './../../Redux/authReducer';
+import { logIn } from '../../Redux/reducers//auth/authReducer';
+import { LockOutlined, MailOutlined, EyeOutlined } from '@ant-design/icons';
 
 const Authorization = (props) => {
 
@@ -34,19 +35,20 @@ const AuthForm = (props) => {
       </div>
       <form className={style.login} onSubmit={props.handleSubmit}>
         <span className={style.capitalAuth}>Авторизация</span>
-        <div className={style.inpitDiv}>
-          <img src={email} className={style.emailImg} alt="email" />
+        <div className={style.inputDiv}>
+          <MailOutlined className={style.emailImg} style={{ color: "#1890FF" }} />
           <Field name={"email"} component={Input}
             className={style.input}
             placeholder={"example@mail.com"}
           />
         </div>
-        <div className={style.inpitDiv}>
-          <img src={password} className={style.passwordImg} alt="pass" />
+        <div className={style.inputDiv}>
+          <LockOutlined className={style.passwordImg} style={{ color: "#1890FF" }} />
           <Field name={"password"} component={Input}
             className={style.input} type={"password"}
-            placeholder={"••••••••"}
+            placeholder={"••••••••"} 
           />
+          
         </div>
         <button className={style.enter}>Войти</button>
       </form>
@@ -54,6 +56,7 @@ const AuthForm = (props) => {
 
   )
 }
+
 const ReduxLoginForm = reduxForm({ form: 'authen' })(AuthForm)
 
 export default connect(null, {

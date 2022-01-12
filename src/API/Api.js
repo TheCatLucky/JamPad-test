@@ -6,7 +6,7 @@ const instance = axios.create({
 
 const authorizedInstance = axios.create({
   baseURL: "https://api.jamskills.ml/api/",
-  headers: { Authorization : `Bearer ${window.localStorage.token}`} 
+  headers: { Authorization : `Bearer ${localStorage.getItem("token")}`} 
 })
 
 export const authAPI = {
@@ -18,7 +18,7 @@ export const authAPI = {
     })
       .then((response) => {
         console.log(response);
-        window.localStorage.userToken = response.data.token;
+        localStorage.setItem("token", response.data.token)
         return response.data;
       })
       

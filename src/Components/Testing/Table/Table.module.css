@@ -1,0 +1,25 @@
+.tableSize {
+  width: 1488px;
+  height: 630px;
+  font-size: 8px;
+  line-height: 22px;
+  padding-top: 31px;
+}
+.pagination {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  margin-top: 52px;
+  margin-left: 660px;
+}
+.tableZone {
+  margin-left: 62px;
+  width: 1488px;
+  height: 734px;
+  background: #ffffff;
+}
+.search{
+  width: 335px;
+  margin: 150px 0px 16px 63px;
+}
+

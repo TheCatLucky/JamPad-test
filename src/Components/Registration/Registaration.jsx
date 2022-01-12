@@ -1,25 +1,24 @@
-import React from 'react'
-import style from "./Registration.module.css"
-import logo from "./../../Common/img/LogoWhite.png"
-import email from "./../../Common/img/Email.svg"
-import password from "./../../Common/img/Password.svg"
-import user from "./../../Common/img/User.svg"
+import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
+import React from 'react';
+import logo from "./../../Common/img/LogoWhite.png";
+import style from "./Registration.module.css";
+import { NavLink } from 'react-router-dom';
 
-class Registration extends React.Component {
-  render() {
+
+const Registration = () =>{
     return (
       <div className={style.reg}>
         <div className={style.intro}>
-          <img src={logo} className={style.logo} alt="logo" />
+          <img src={logo} className={style.logo} alt="logo"/>
           <span className={style.capitalIntro}>Добро Пожаловать!</span>
           <p className={style.firstP}><span className={style.jam}>Jamskills</span> - это сервис для автоматизации оценки сотрудников и кандидатов!</p>
           <p className={style.secondP}>Если Вы уже зарегистрированны, <br /> войдите в свой кабинет</p>
-          <button className={style.create}>Войти</button>
+          <NavLink to="/authorization"><button className={style.create}>Войти</button></NavLink>
         </div>
         <div className={style.login}>
           <span className={style.capitalAuth}>Регистрация</span>
           <div className={style.inpitDivRow}>
-            <img src={user} className={style.userImg} alt="user" />
+            <UserOutlined className={style.userImg} style={{ color: "#1890FF"}}/>
             <div className={style.inpitDivCol}>
               <input className={style.input} placeholder="Фамилия"></input>
               <div className={style.inpitDivRow}>
@@ -29,11 +28,12 @@ class Registration extends React.Component {
             </div>
           </div>
           <div className={style.inpitDiv + " " + style.mt24}>
-            <img src={email} className={style.emailImg} alt="email" />
+            <MailOutlined className={style.emailImg} style={{ color: "#1890FF" }}/>
             <input className={style.input} placeholder="example@mail.com"></input>
           </div>
           <div className={style.inpitDiv}>
-            <img src={password} className={style.passwordImg} alt="pass" />
+         {/*    <img src={password} className={style.passwordImg} alt="pass" /> */}
+            <LockOutlined className={style.passwordImg} style={{ color: "#1890FF" }}/>
             <div className={style.inpitDivCol + " " + style.mt8}>
               <input className={style.input} placeholder="••••••••"></input>
               <input className={style.input} placeholder="••••••••"></input>
@@ -48,6 +48,6 @@ class Registration extends React.Component {
       </div>
     )
   }
-}
+
 
 export default Registration;

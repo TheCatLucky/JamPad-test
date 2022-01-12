@@ -27,12 +27,14 @@
   padding-top: 48px;
   line-height: 46px;
   font-weight: 500;
+  font-size: 38px;
   color: #ffffff;
 }
 .capitalAuth {
   padding: 250px 0px 48px 0px;
   line-height: 46px;
   font-weight: 500;
+  font-size: 38px;
   color: #1890ff;
 }
 .firstP {
@@ -44,7 +46,7 @@
   color: #ffffff;
 }
 .secondP {
-  padding-top: 48px;
+  padding-top: 25px;
   margin-bottom: 16px;
   font-size: 24px;
   line-height: 32px;
@@ -56,11 +58,12 @@
 .lastP {
   font-weight: 400px;
   font-size: 12px;
+  align-items: cent;
   line-height: 20px;
   text-decoration: none;
 }
 .lastP a {
-  color: #1890ff
+  color: #1890ff;
 }
 .pl8 {
   padding-left: 8px;
@@ -93,7 +96,7 @@
 .input {
   width: 567px;
   height: 56px;
-  /* background: red; */
+  /*  background: red; */
   background: #f5f5f5;
   border-radius: 2px;
   border: none;
@@ -103,7 +106,7 @@
   line-height: 22px;
   color: rgba(0, 0, 0, 0.45);
 }
-.input::placeholder{
+.input::placeholder {
   color: rgba(0, 0, 0, 0.45);
 }
 .name {
@@ -113,24 +116,23 @@
   margin-left: 8px;
   width: 359px;
 }
-.userImg {
-  width: 32px;
-  height: 32px;
+.userImg svg {
+  width: 36px;
+  height: 36px;
   margin-right: 17px;
   margin-bottom: 7px;
 }
-.emailImg {
-  width: 38px;
-  height: 38px;
+.emailImg svg {
+  width: 36px;
+  height: 36px;
   margin-right: 16px;
   margin-bottom: 8px;
 }
-.passwordImg {
-  width: 34px;
-  height: 34px;
+.passwordImg svg {
+  width: 36px;
+  height: 36px;
   margin-top: 27px;
-  margin-left: 5px;
-  margin-right: 20px;
+  margin-right: 16px;
 }
 .create {
   width: 224px;
@@ -146,7 +148,7 @@
 .enter {
   width: 224px;
   height: 40px;
-  margin-top: 47px;
+  margin-top: 35px;
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
@@ -154,14 +156,15 @@
   background: #1890ff;
   border: none;
 }
-.checkbox{
-  width: 16px ;
-  height: 16px ;
+.checkbox {
+  padding-top: 20px;
+  width: 16px;
+  height: 16px;
 }
 .accept {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   margin-top: -16px;
   margin-right: 55px;
 }
