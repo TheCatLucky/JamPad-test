@@ -1,4 +1,3 @@
-import ColumnGroup from 'antd/lib/table/ColumnGroup';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
@@ -18,7 +17,7 @@ const AppRouter = () => {
       )}
       <Route
         path="*"
-        element={<Navigate to={routeNames.TEST}/>}/>
+        element={<Navigate to={routeNames.HOLLANDTEST}/>}/>
     </Routes>
       : <Routes>
         {publicRoutes.map(route =>
@@ -29,7 +28,7 @@ const AppRouter = () => {
         )}
         <Route
           path="*"
-          element={<Navigate to={routeNames.HOLLANDTEST} />} />
+          element={<Navigate to={routeNames.AUTH} />} />
       </Routes>
 
   )
