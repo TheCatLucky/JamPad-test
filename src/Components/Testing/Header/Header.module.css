@@ -2,10 +2,16 @@
   display: flex;
   position: relative;
   flex-direction: row;
+  justify-content: space-between;
   height: 80px;
   background: #fafafa;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
   z-index: 100;
+}
+.logoName {
+  display: flex;
+  position: relative;
+  flex-direction: row;
 }
 .logo {
   width: 48px;
@@ -22,4 +28,14 @@
   font-size: 20px;
   line-height: 28px;
   color: #096dd9;
+}
+.userName {
+  font-size: 16px;
+  line-height: 24px;
+  padding-right: 8px;
+  color: rgba(0, 0, 0, 0.45);
+}
+.userInfo {
+  align-items: center;
+  margin: 10px 48px 0px 0px;
 }

@@ -1,0 +1,17 @@
+.wrapper {
+  width: 1920px;
+  height: 1080px;
+  background: #fafafa;
+}
+.logo {
+  width: 100px;
+  height: 100px;
+  margin: 73px 0px 0px 146px;
+}
+.wrapper .steps {
+  margin: 107px 376px 0px 130px;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}

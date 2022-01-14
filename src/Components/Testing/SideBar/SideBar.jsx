@@ -1,8 +1,17 @@
-import { HomeFilled, UserOutlined, LogoutOutlined } from '@ant-design/icons';
+import { HomeFilled, LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import { Row } from 'antd';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { logOut } from './../../../Redux/reducers/auth/authReducer';
 import style from './SideBar.module.css';
-const SideBar = () => {
+
+const SideBar = (props) => {
+  
+  const dispatch = useDispatch();
+  const logout = () => {
+    dispatch(logOut())
+    
+  }
   return (
     <div className={style.sideBar}>
       <Row className={style.firstDiv} align='bottom'>
@@ -10,14 +19,16 @@ const SideBar = () => {
         <span className={style.homePage} >Домашняя страница</span>
       </Row>
       <div className={style.footerSideBar}>
-        <span className={style.settings}>Настройки</span>
-        <Row align='bottom' className={style.footerMenu}>
-          <UserOutlined className={style.footerIcon} style={{ opacity: 0.45 }}/>
-          <span className={style.homePage}>Профиль</span>
+        <button className={style.settings}>Настройки</button>
+        <Row align='middle' className={style.footerMenu} >
+          <UserOutlined className={style.footerIcon} style={{ opacity: 0.45 }} />
+          <button className={style.homePage}>Профиль</button>
         </Row>
-        <Row align='bottom' className={style.footerMenu}>
+        <Row align='middle' className={style.footerMenu} >
           <LogoutOutlined className={style.footerIcon} style={{ opacity: 0.45 }} />
-          <span className={style.homePage}>Выход</span>
+          <button className={style.homePage} onClick={() => logout()}>
+            Выход
+          </button>
         </Row>
       </div>
     </div>
@@ -25,4 +36,4 @@ const SideBar = () => {
   )
 }
 
-export default SideBar
+export default SideBar;

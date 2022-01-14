@@ -6,7 +6,7 @@ import { useActions } from './hooks/useActions';
 const App = () => {
   const setUser = useActions();
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem("userToken")) {
       setUser(true)
     } 
   })

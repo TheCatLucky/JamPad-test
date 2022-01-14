@@ -11,3 +11,10 @@
   width: 1920px;
   height: 1080px;
 }
+.ant-steps-item-title::after{
+  border: 1px solid #BFBFBF;
+}
+div .ant-steps-item-icon .ant-steps-icon {
+  top: -2px;
+}
+

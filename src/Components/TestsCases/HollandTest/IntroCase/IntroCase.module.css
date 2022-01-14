@@ -1,0 +1,56 @@
+.testInfo {
+  text-align: center;
+}
+.testNum {
+  padding-top: 137px;
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 46px;
+}
+.bold {
+  font-size: 24px;
+  line-height: 32px;
+  padding-top: 38px;
+  margin-bottom: 30px;
+}
+.answerButton {
+  width: 299px;
+  height: 88px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  border: 1px solid #bfbfbf;
+  background: #f5f5f5;
+  border-radius: 2px 0px 0px 2px;
+  margin-left: 88px;
+}
+.answerButton:hover,
+.answerButton:active,
+.answerButton:focus{
+  color: #ffffff;
+  background: #1890ff;
+  cursor: pointer;
+}
+.smaillBold {
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: -23px;
+}
+.buttonZone {
+  display: flex;
+  flex-direction: row;
+  margin-left: 529px;
+  margin-bottom: -5px;
+}
+.testInfo .acceptButton {
+  margin-top: 40px;
+  width: 689px;
+  height: 56px;
+}
+.acceptButton:hover{
+  cursor: pointer;
+}
+.testInfo .acceptButton span {
+  font-size: 24px;
+  line-height: 32px;
+}

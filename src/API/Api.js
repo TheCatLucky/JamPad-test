@@ -6,8 +6,13 @@ const instance = axios.create({
 
 const authorizedInstance = axios.create({
   baseURL: "https://api.jamskills.ml/api/",
-  headers: { Authorization : `Bearer ${localStorage.getItem("token")}`} 
+  /* headers: { Authorization: `Bearer ${localStorage.getItem("userToken")}` } */
 })
+
+authorizedInstance.interceptors.request.use(config => {
+  config.headers.Authorization = `Bearer ${localStorage.getItem("userToken")}`
+  return config;
+});
 
 export const authAPI = {
   login(email, password) {
@@ -18,12 +23,17 @@ export const authAPI = {
     })
       .then((response) => {
         console.log(response);
-        localStorage.setItem("token", response.data.token)
+        localStorage.setItem("userToken", response.data.token)
         return response.data;
       })
-      
   },
-  registration(email, password, first_name, last_name, patronymic ) {
+  logout() {
+    return (
+      localStorage.removeItem("userToken")
+    )
+  },
+
+  registration(email, password, first_name, last_name, patronymic) {
     console.log(email, password)
     return instance.post(`/testingusers/registration`, {
       email,
@@ -35,16 +45,15 @@ export const authAPI = {
       .then(response => {
         console.log(response);
         return response.data;
-    })
+      })
   }
 }
 
-export const TestsAPI = {
-  getAllQuizzes( ) {
-    console.log()
+export const testsAPI = {
+  getAllQuizzes() {
     return authorizedInstance.get(`/testingusers/setquizzes`)
       .then(response => {
-        console.log(response);
+        console.log(response.data);
         return response.data;
       })
   },
@@ -56,7 +65,7 @@ export const TestsAPI = {
         return response.data;
       })
   },
-  sendHolQuizzAnswer(id,index,name) {
+  sendHolQuizzAnswer(id, index, name) {
     console.log(id, index, name)
     return authorizedInstance.post(`/testingusers/setquizzes/${id}/hol/answers`, {
       index,
@@ -67,7 +76,7 @@ export const TestsAPI = {
         return response.data;
       })
   },
-  sendUskQuizzAnswer(id,index,code) {
+  sendUskQuizzAnswer(id, index, code) {
     console.log(id, index, code)
     return authorizedInstance.post(`/testingusers/setquizzes/${id}/usk/answers`, {
       index,
@@ -78,7 +87,7 @@ export const TestsAPI = {
         return response.data;
       })
   },
-  sendGatb_5QuizzAnswer(id,result) {
+  sendGatb_5QuizzAnswer(id, result) {
     console.log(id, result)
     return authorizedInstance.post(`/testingusers/setquizzes/${id}/gatb_5/answers`, {
       result
