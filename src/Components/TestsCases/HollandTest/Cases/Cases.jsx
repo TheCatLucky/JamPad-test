@@ -1,10 +1,13 @@
 import { React, useState } from 'react'
 import { Button, Progress } from 'antd';
 import style from "./Cases.module.css"
+import { setCurrentHolProgress } from '../../../../Redux/reducers/test/testReducer';
+import { useDispatch } from 'react-redux';
 
 const Cases = (props) => {
   const [answer, setAnswer] = useState("");
   const [error, setError] = useState(false);
+  const dispatch = useDispatch();
   const changePage = (answer) => {
     if (!answer) {
       setError(true)
@@ -13,6 +16,7 @@ const Cases = (props) => {
     onSubmit(answer);
     setAnswer("");
     setError(false);
+    dispatch(setCurrentHolProgress(percent));
     props.onPageChange(props.currentPage + 1);
     return;
   }

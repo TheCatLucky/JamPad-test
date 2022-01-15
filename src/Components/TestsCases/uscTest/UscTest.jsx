@@ -3,14 +3,15 @@ import 'antd/dist/antd.css';
 import { React, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setCurrentUscPage } from '../../../Redux/reducers/test/testReducer';
+import { sendUscTestData, setCurrentUscPage } from '../../../Redux/reducers/test/testReducer';
 import logo from "./../../../Common/img/Logo.png";
 import Cases from './Cases/Cases';
 import style from "./UscTest.module.css";
 import IntroCase from './IntroCase/IntroCase';
+import { testsAPI } from '../../../API/Api';
 const UscTest = () => {
   const { Step } = Steps;
-  const [current, setCurrent] = useState(1);
+  const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate()
@@ -21,6 +22,16 @@ const UscTest = () => {
 
   const addAnswer = (answer) => {
     setAnswers((arr) => [...arr, answer]);
+  }
+  const goToNextTest = (answer) => {
+    console.log('привет')
+    testsAPI.sendUscQuizzAnswer(1, 1, `${answer[0]},${answer[1]},${answer[2]}`)
+   /*  dispatch(sendUscTestData({
+      id: 1,
+      index: 1,
+      code: answers
+    })); */
+    navigate(`/testing`);
   }
   const questions = [{
     "index": 1,
@@ -55,7 +66,7 @@ const UscTest = () => {
       currentRender = testCase;
       break;
     case 4:
-      navigate(`/testing`);
+      goToNextTest(answers)
       break;
     default:
       currentRender = null;

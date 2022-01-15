@@ -2,6 +2,7 @@ import { Badge, Input, Pagination, Progress, Space, Table } from 'antd';
 import React, { useEffect, useState, useMemo } from 'react';
 import style from "./Table.module.css";
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 const { Search } = Input;
 
 
@@ -23,7 +24,8 @@ const MyTable = (props) => {
   const [current, setCurrent] = useState(1);
   const [selectedRows, setSelectedRows] = useState([]);
   const [searhText, setSearchText] = useState("");
-
+  const holProgress = useSelector(state => state.test.currentHolProgress)
+  const uscProgress = useSelector(state => state.test.currentUscProgress)
 
   const data = [];
   const columns = [
@@ -67,22 +69,53 @@ const MyTable = (props) => {
   ];
 
   const createTable = () => {
-    console.log(props.tableValue)
     if (!props.tableValue) {
       return;
     }
 
     props.tableValue.map(task => {
+      const date = (serverDate) => {
+        let day = serverDate.getDate();
+        let month = serverDate.getMonth();
+        let year = serverDate.getFullYear();
+        if (day <= 9) {
+          day = `0${day}`
+        }
+        if (month + 1 <= 9) {
+          month = `0${month}`
+        }
+        return `${day}.${month + 1}.${year}`
+      }
+      let inviteDate = date(new Date(Date.parse(task.invited_at)));
+      let endDate = date(new Date(Date.parse(task.deadline_at)))
+      let test = null;
+      let startTest = null;
+      let progress = 0;
+      switch (task.id) {
+        case 1:
+          test = `Тест Холланда`
+          startTest = <NavLink key={task.id + 3} to="/hollandTest" className={style.actionsSpan}>Перейти</NavLink>
+          progress = holProgress
+          break;
+      
+        case 2:
+          test = `Тест УСК`
+          startTest = <NavLink key={task.id + 3} to="/uscTest" className={style.actionsSpan}>Перейти</NavLink>
+          progress = uscProgress
+          break;
+      
+        default:
+          break;
+      }
       let status = "";
       switch (task.status) {
-        case task.status === "created":
+        case  "created":
           status = [<Badge color={"#1890FF"} key={task.id + 6} />, "Не Начато"];
-          console.log('rere')
           break;
-        case task.status === "in_progress":
+        case  "in_progress":
           status = [<Badge color={"#FAAD14"} key={task.id + 6} />, "В процессе"];
           break;
-        case task.status === "done": //примерное значение
+        case  "done": //примерное значение
           status = [<Badge color={"#52C41A"} key={task.id + 6} />, "Выполнено"];
           break;
         default:
@@ -91,14 +124,14 @@ const MyTable = (props) => {
       }
       data.push({
         key: task.id,
-        test: `Тест "...`,
+        test: test,
         subtest: `Тест #${task.id}`,
         sender: [<a key={task.id + 4}>{task.hr}</a>],
-        inviteDate: [task.invited_at],
-        endDate: [task.deadline_at],
+        inviteDate: inviteDate,
+        endDate: endDate,
         testState: status,
-        progress: <Progress percent={30} key={task.id + 5} />,
-        actions: [<a key={task.id + 3} href="#" className={style.actionsSpan}>Перейти</a>,
+        progress: <Progress percent={progress} key={task.id + 5} />,
+        actions: [startTest,
         <a key={task.id + 1} href="#" className={style.actionsSpan}>Отказ</a>,
         <a key={task.id + 2} href="#" >Результат</a>]
       });

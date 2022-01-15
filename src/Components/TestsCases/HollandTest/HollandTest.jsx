@@ -3,11 +3,14 @@ import 'antd/dist/antd.css';
 import { React, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { testsAPI } from '../../../API/Api';
 import { setCurrentHolPage } from '../../../Redux/reducers/test/testReducer';
 import logo from "./../../../Common/img/Logo.png";
+import { sendHolTestData } from './../../../Redux/reducers/test/testReducer';
 import Cases from './Cases/Cases';
 import style from "./HolandTest.module.css";
 import IntroCase from './IntroCase/IntroCase';
+
 const HollandTest = () => {
   const { Step } = Steps;
   const [current, setCurrent] = useState(0);
@@ -21,6 +24,15 @@ const HollandTest = () => {
 
   const addAnswer = (answer) => {
     setAnswers((arr) => [...arr, answer]);
+  }
+  const goToNextTest = (answers) => {
+    testsAPI.sendHolQuizzAnswer(1, 1, `${answers[0]},${answers[1]},${answers[2]}`)
+    /* dispatch(sendHolTestData({
+      id: 1,
+      index: 1,
+      name: answers
+    })); */
+    navigate(`/uscTest`);
   }
   const questions = [{
     "index": 1,
@@ -85,7 +97,7 @@ const HollandTest = () => {
       currentRender = testCase;
       break;
     case 4:
-      navigate(`/testing`);
+      goToNextTest(answers)
       break;
     default:
       currentRender = null;

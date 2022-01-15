@@ -19,15 +19,13 @@ const Testing = () => {
     const timeoutId = setTimeout(() => {
       testsAPI.getAllQuizzes().then(data => {
         dispatch(setTests(data))
-        console.log("я тут был")
-        //dispatch(setLoaded())
       })
     }, 1000)
     if (!tableValue) {
       return;
     }
     return clearTimeout(timeoutId);
-  }, []) 
+  } ) 
 
   /*  if (!isLoading) {
      return <Preloader/>

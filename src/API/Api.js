@@ -17,7 +17,7 @@ authorizedInstance.interceptors.request.use(config => {
 export const authAPI = {
   login(email, password) {
     console.log(email, password)
-    return instance.post(`/testingusers/login`, {
+    return instance.post(`testingusers/login`, {
       email,
       password
     })
@@ -35,7 +35,7 @@ export const authAPI = {
 
   registration(email, password, first_name, last_name, patronymic) {
     console.log(email, password)
-    return instance.post(`/testingusers/registration`, {
+    return instance.post(`testingusers/registration`, {
       email,
       password,
       first_name,
@@ -51,7 +51,7 @@ export const authAPI = {
 
 export const testsAPI = {
   getAllQuizzes() {
-    return authorizedInstance.get(`/testingusers/setquizzes`)
+    return authorizedInstance.get(`testingusers/setquizzes`)
       .then(response => {
         console.log(response.data);
         return response.data;
@@ -59,7 +59,7 @@ export const testsAPI = {
   },
   getQuizzById(id) {
     console.log(id)
-    return authorizedInstance.get(`/testingusers/setquizzes/${id}`)
+    return authorizedInstance.get(`testingusers/setquizzes/${id}`)
       .then(response => {
         console.log(response);
         return response.data;
@@ -67,20 +67,20 @@ export const testsAPI = {
   },
   sendHolQuizzAnswer(id, index, name) {
     console.log(id, index, name)
-    return authorizedInstance.post(`/testingusers/setquizzes/${id}/hol/answers`, {
-      index,
-      name
+    return authorizedInstance.post(`testingusers/setquizzes/${id}/hol/answers`, {
+      "index": index,
+      "name": name
     })
       .then(response => {
         console.log(response);
         return response.data;
       })
   },
-  sendUskQuizzAnswer(id, index, code) {
+  sendUscQuizzAnswer(id, index, code) {
     console.log(id, index, code)
-    return authorizedInstance.post(`/testingusers/setquizzes/${id}/usk/answers`, {
-      index,
-      code
+    return authorizedInstance.post(`testingusers/setquizzes/${id}/usk/answers`, {
+      "index" : index,
+      "code" : code
     })
       .then(response => {
         console.log(response);
@@ -89,7 +89,7 @@ export const testsAPI = {
   },
   sendGatb_5QuizzAnswer(id, result) {
     console.log(id, result)
-    return authorizedInstance.post(`/testingusers/setquizzes/${id}/gatb_5/answers`, {
+    return authorizedInstance.post(`testingusers/setquizzes/${id}/gatb_5/answers`, {
       result
     })
       .then(response => {
