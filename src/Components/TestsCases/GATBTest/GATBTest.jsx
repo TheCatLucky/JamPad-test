@@ -1,60 +1,62 @@
 import { Steps } from 'antd';
-
 import { React, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { sendUscTestData, setCurrentUscPage } from '../../../Redux/reducers/test/testReducer';
+import { testsAPI } from '../../../API/Api';
+import Countdown from '../../../Common/Timer/Timer';
+import { setCurrentHolPage } from '../../../Redux/reducers/test/testReducer';
 import logo from "./../../../Common/img/Logo.png";
 import Cases from './Cases/Cases';
-import style from "./UscTest.module.css";
+import style from "./GATBTest.module.css";
 import IntroCase from './IntroCase/IntroCase';
-import { testsAPI } from '../../../API/Api';
-const UscTest = () => {
+
+const GATBTest = () => {
   const { Step } = Steps;
-  const [current, setCurrent] = useState(0);
+  const StatusBoard = {
+    STARTED: 'Started',
+    STOPPED: 'Stopped',
+  }
+  const [current, setCurrent] = useState(1);
   const [answers, setAnswers] = useState([]);
+  const [status, setStatus] = useState(StatusBoard.STOPPED)
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const onPageChange = (current) => {
     setCurrent(current);
-    dispatch(setCurrentUscPage(current));
+    dispatch(setCurrentHolPage(current));
   }
 
   const addAnswer = (answer) => {
     setAnswers((arr) => [...arr, answer]);
   }
-  const goToNextTest = (answer) => {
-    console.log('привет')
-    testsAPI.sendUscQuizzAnswer(1, 1, `${answer[0]},${answer[1]},${answer[2]}`)
-   /*  dispatch(sendUscTestData({
+  const handleStart = () => {
+   // setStatus(StatusBoard.STARTED)
+  }
+  const handleStop = () => {
+    setStatus(StatusBoard.STOPPED)
+  }
+  const goToNextTest = (answers) => {
+    testsAPI.sendGatb_5QuizzAnswer(1, answers)
+    /* dispatch(sendHolTestData({
       id: 1,
       index: 1,
-      code: answers
+      name: answers
     })); */
     navigate(`/testing`);
   }
-  const questions = [{
-    "index": 1,
-    "question": "Продвижение по службе больше зависит от удачного стечечния обстоятельств, чем от способностей и усилий человека."
-  },
-  {
-    "index": 2,
-    "question": "Большинство разводов происходит от того, что люди не захотели приспособиться друг к другу."
-  },
-  {
-    "index": 3,
-    "question": "Болезнь – дело случая; если уж суждено заболеть, то ничего не поделаешь."
-  }
-  ]
+
   let currentRender = null;
   const testCase = <Cases onPageChange={onPageChange}
     addAnswer={addAnswer}
-    question={questions[current - 1]}
     currentPage={current}
   />;
   switch (current) {
     case 0:
-      currentRender = <IntroCase onPageChange={onPageChange} />
+      currentRender = <IntroCase onPageChange={onPageChange}
+        handleStart={handleStart}
+        handleStop={handleStop}
+        status={status}
+        />
       break;
     case 1:
       currentRender = testCase;
@@ -84,10 +86,16 @@ const UscTest = () => {
           <Step />
           <Step />
         </Steps>
+        <div className={style.timer}>
+        <Countdown StatusBoard={StatusBoard}
+          status={status}
+          />
+        </div>
       </div>
+      
       {currentRender}
     </div>
   )
 }
 
-export default UscTest
+export default GATBTest;

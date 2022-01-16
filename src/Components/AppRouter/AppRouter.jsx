@@ -17,7 +17,7 @@ const AppRouter = () => {
       )}
       <Route
         path="*"
-        element={<Navigate to={routeNames.TEST}/>}/>
+        element={<Navigate to={routeNames.GATBTEST}/>}/>
     </Routes>
       : <Routes>
         {publicRoutes.map(route =>

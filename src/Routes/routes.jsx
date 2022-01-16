@@ -1,3 +1,4 @@
+import GATBTest from "../Components/TestsCases/GATBTest/GATBTest";
 import HollandTest from "../Components/TestsCases/HollandTest/HollandTest";
 import Authorization from "./../Components/Authorization/Authorization";
 import Registration from './../Components/Registration/Registaration';
@@ -9,16 +10,19 @@ export const routeNames = {
   REGISTRATION: '/registration',
   TEST: '/testing',
   HOLLANDTEST: '/hollandTest',
-  USCTEST: '/uscTest'
+  USCTEST: '/uscTest',
+  GATBTEST: `/gatbTest`
 }
 export const publicRoutes = [
-  { path: routeNames.AUTH, component: <Authorization/> },
-  { path: routeNames.REGISTRATION,  component: <Registration/>},
+  { path: routeNames.AUTH, component: <Authorization /> },
+  { path: routeNames.REGISTRATION, component: <Registration /> },
 
 ]
 
 export const privateRoutes = [
-  { path: routeNames.TEST, component: <Testing/> },
+  { path: routeNames.TEST, component: <Testing /> },
   { path: routeNames.HOLLANDTEST, component: <HollandTest /> },
-  { path: routeNames.USCTEST, component: <UscTest /> }
+  { path: routeNames.USCTEST, component: <UscTest /> },
+  { path: routeNames.GATBTEST, component: <GATBTest /> }
+
 ]

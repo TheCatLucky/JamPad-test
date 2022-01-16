@@ -67,10 +67,10 @@ export const testsAPI = {
   },
   sendHolQuizzAnswer(id, index, name) {
     console.log(id, index, name)
-    return authorizedInstance.post(`testingusers/setquizzes/${id}/hol/answers`, {
+    return authorizedInstance.post(`testingusers/setquizzes/${id}/hol/answers`, [{
       "index": index,
       "name": name
-    })
+    }])
       .then(response => {
         console.log(response);
         return response.data;
