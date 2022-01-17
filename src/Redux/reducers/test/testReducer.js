@@ -4,12 +4,14 @@ const SET_CURRENT_HOL_PAGE = "SET_CURRENT_HOL_PAGE";
 const SET_CURRENT_USC_PAGE = "SET_CURRENT_USC_PAGE";
 const SET_CURRENT_HOL_PROGRESS = "SET_CURRENT_HOL_PROGRESS"
 const SET_CURRENT_USC_PROGRESS = "SET_CURRENT_USC_PROGRESS"
+const SET_CURRENT_GATB_PROGRESS = "SET_CURRENT_GATB_PROGRESS"
 const SET_TESTS = "SET_TESTS";
 const initialState = {
   currentHolPage: 0,
   currentHolProgress : 0,
   currentUscPage: 0,
   currentUscProgress: 0,
+  currentGtabProgress : 0,
   tests: {}
 }
 
@@ -34,6 +36,11 @@ const testReducer = (state = initialState, action) => {
       return {
         ...state,
         currentUscProgress: action.payload.currentUscProgress
+      }
+    case SET_CURRENT_GATB_PROGRESS:
+      return {
+        ...state,
+        currentGtabProgress: action.payload.currentGtabProgress
       }
     case SET_TESTS:
       return {
@@ -70,6 +77,12 @@ export const setCurrentUscProgress = (currentUscProgress) => ({
     currentUscProgress
   }
 }) 
+export const setCurrentGatbProgress = (currentGtabProgress) => ({
+  type: SET_CURRENT_GATB_PROGRESS,
+  payload: {
+    currentGtabProgress
+  }
+}) 
 
 export const setTests = (tests) => ({
   type: SET_TESTS,
@@ -77,12 +90,10 @@ export const setTests = (tests) => ({
 })
 
 export const sendHolTestData = (data) => {
-  console.log(data)
   testsAPI.sendHolQuizzAnswer(data.id, data.index, data.name)
   .then(response => console.log(response))
 }
 export const sendUscTestData = (data) => {
-  console.log(data)
   testsAPI.sendUscQuizzAnswer(data.id, data.index, data.code)
   .then(response => console.log(response))
 }

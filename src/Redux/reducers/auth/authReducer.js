@@ -2,10 +2,8 @@ import { authAPI } from "../../../API/Api";
 
 const SET_LOGGED_IN = "SET_LOGGED_IN";
 const SET_LOGOUT = "SET_LOGOUT";
-const SET_LOADED = "SET_LOADED";
 const initialState = {
   isLoggedIn: false,
-  isLoaded : false
 }
 
 const authReducer = (state = initialState, action) => {
@@ -20,11 +18,6 @@ const authReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false
       }
-    case SET_LOADED:
-      return {
-        ...state,
-        isLoaded: true
-      }
     default:
       return state;
   }
@@ -38,20 +31,22 @@ export const setUserLoggedIn = (isLoggedIn) => ({
 export const setUserLogOut = () => ({
   type: SET_LOGOUT,
 })
-export const setAppLoaded = () => ({
-  type: SET_LOADED,
-})
+
 export const logIn = (email, password) => (dispatch) => {
   authAPI.login(email, password)
     .then(response => {
       dispatch(setUserLoggedIn(true))
-      setAppLoaded()
+    })
+}
+export const registration = (email, password, firstName, lastName, patronymic) => (dispatch) => {
+  authAPI.registration(email, password, firstName, lastName, patronymic)
+    .then(response => {
+
     })
 }
 export const logOut = () => (dispatch) => {
   authAPI.logout();
   dispatch(setUserLogOut())
-
 }
 
 export default authReducer;

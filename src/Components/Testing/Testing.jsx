@@ -5,7 +5,6 @@ import { testsAPI } from '../../API/Api';
 import { setTests } from '../../Redux/reducers/test/testReducer';
 import MyHeader from './Header/Header';
 import SmallHeader from './Header/SmallHeader';
-/* import Header from './Header/Header'; */
 import SideBar from './SideBar/SideBar';
 import Result from './Table/Results/Results';
 import MyTable from './Table/Table';
@@ -13,9 +12,7 @@ const { Header, Content, Sider } = Layout;
 const Testing = () => {
   const dispatch = useDispatch();
   const tableValue = useSelector(state => state.test.tests.tests);
-
   useEffect(() => {
-    console.log(tableValue, "---tableValu")
     const timeoutId = setTimeout(() => {
       testsAPI.getAllQuizzes().then(data => {
         dispatch(setTests(data))
@@ -26,10 +23,6 @@ const Testing = () => {
     }
     return clearTimeout(timeoutId);
   } ) 
-
-  /*  if (!isLoading) {
-     return <Preloader/>
-   } */
   return (
     <Layout>
       <Header style={{ padding: 0, zIndex: 10, height: 80 }}>

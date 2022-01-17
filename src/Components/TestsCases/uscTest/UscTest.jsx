@@ -1,37 +1,35 @@
 import { Steps } from 'antd';
-
 import { React, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { sendUscTestData, setCurrentUscPage } from '../../../Redux/reducers/test/testReducer';
+import { testsAPI } from '../../../API/Api';
+import { setCurrentUscPage } from '../../../Redux/reducers/test/testReducer';
 import logo from "./../../../Common/img/Logo.png";
 import Cases from './Cases/Cases';
-import style from "./UscTest.module.css";
 import IntroCase from './IntroCase/IntroCase';
-import { testsAPI } from '../../../API/Api';
+import style from "./UscTest.module.css";
+
 const UscTest = () => {
   const { Step } = Steps;
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(+localStorage.getItem("uscPage") || 0);
   const [answers, setAnswers] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const onPageChange = (current) => {
     setCurrent(current);
     dispatch(setCurrentUscPage(current));
+    localStorage.setItem("uscPage", current);
   }
-
+  if (+localStorage.getItem("uscPage") === 4) {
+    navigate(`/testing`);
+    localStorage.setItem("uscPage", 0);
+  }
   const addAnswer = (answer) => {
     setAnswers((arr) => [...arr, answer]);
   }
   const goToNextTest = (answer) => {
-    console.log('привет')
     testsAPI.sendUscQuizzAnswer(1, 1, `${answer[0]},${answer[1]},${answer[2]}`)
-   /*  dispatch(sendUscTestData({
-      id: 1,
-      index: 1,
-      code: answers
-    })); */
-    navigate(`/testing`);
+    navigate(`/gatbTest`);
   }
   const questions = [{
     "index": 1,

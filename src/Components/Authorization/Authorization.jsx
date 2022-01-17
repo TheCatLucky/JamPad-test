@@ -3,7 +3,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
-import { logIn } from '../../Redux/reducers//auth/authReducer'
+import { logIn } from '../../Redux/reducers/auth/authReducer'
 import { Input } from './../../Common/Forms/FormControls'
 import logo from "./../../Common/img/LogoWhite.png"
 import style from "./Authorization.module.css"
@@ -47,7 +47,6 @@ const AuthForm = (props) => {
             className={style.input} type={"password"}
             placeholder={"••••••••"} 
           />
-          
         </div>
         <button className={style.enter}>Войти</button>
       </form>

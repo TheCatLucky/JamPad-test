@@ -1,37 +1,35 @@
 import { Steps } from 'antd';
-
 import { React, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { testsAPI } from '../../../API/Api';
 import { setCurrentHolPage } from '../../../Redux/reducers/test/testReducer';
 import logo from "./../../../Common/img/Logo.png";
-import { sendHolTestData } from './../../../Redux/reducers/test/testReducer';
 import Cases from './Cases/Cases';
 import style from "./HolandTest.module.css";
 import IntroCase from './IntroCase/IntroCase';
 
+
 const HollandTest = () => {
   const { Step } = Steps;
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(+localStorage.getItem("holPage") || 0);
   const [answers, setAnswers] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const onPageChange = (current) => {
     setCurrent(current);
     dispatch(setCurrentHolPage(current));
+    localStorage.setItem("holPage", current) ;
   }
-
+  if (+localStorage.getItem("holPage") === 4) {
+    navigate(`/testing`);
+    localStorage.setItem("holPage", 0);
+  }
   const addAnswer = (answer) => {
     setAnswers((arr) => [...arr, answer]);
   }
   const goToNextTest = (answers) => {
     testsAPI.sendHolQuizzAnswer(1, 1, `${answers[0]},${answers[1]},${answers[2]}`)
-    /* dispatch(sendHolTestData({
-      id: 1,
-      index: 1,
-      name: answers
-    })); */
     navigate(`/uscTest`);
   }
   const questions = [{

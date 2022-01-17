@@ -12,8 +12,8 @@
   border-radius: 2px 0px 0px 2px;
   margin-left: 88px;
 }
-.answerButton:hover,
-.answerButton:focus {
+.testInfo .answerButton:hover,
+.testInfo .answerButton:focus {
   color: #ffffff;
   background: #1890ff;
   cursor: pointer;
@@ -24,7 +24,7 @@
   padding-top: 150px;
   margin-bottom: 90px;
 }
-.progressBar {
+.testInfo .progressBar {
   width: 710px;
   height: 29px;
   margin-bottom: 70px;

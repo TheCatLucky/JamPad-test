@@ -17,6 +17,9 @@ const Cases = (props) => {
     setAnswer("");
     setError(false);
     dispatch(setCurrentUscProgress(percent));
+    if (props.currentPage === 3) {
+      dispatch(setCurrentUscProgress(100));
+    }
     props.onPageChange(props.currentPage + 1);
     return;
   }

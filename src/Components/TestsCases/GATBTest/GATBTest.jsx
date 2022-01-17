@@ -16,8 +16,8 @@ const GATBTest = () => {
     STARTED: 'Started',
     STOPPED: 'Stopped',
   }
-  const [current, setCurrent] = useState(1);
-  const [answers, setAnswers] = useState([]);
+  const [current, setCurrent] = useState(0);
+  const [answers, setAnswers] = useState(0);
   const [status, setStatus] = useState(StatusBoard.STOPPED)
   const dispatch = useDispatch();
   const navigate = useNavigate()
@@ -26,22 +26,15 @@ const GATBTest = () => {
     dispatch(setCurrentHolPage(current));
   }
 
-  const addAnswer = (answer) => {
-    setAnswers((arr) => [...arr, answer]);
+  const addAnswer = (correctAnswers) => {
+    setAnswers(correctAnswers);
   }
   const handleStart = () => {
-   // setStatus(StatusBoard.STARTED)
+    setStatus(StatusBoard.STARTED)
   }
-  const handleStop = () => {
-    setStatus(StatusBoard.STOPPED)
-  }
+
   const goToNextTest = (answers) => {
     testsAPI.sendGatb_5QuizzAnswer(1, answers)
-    /* dispatch(sendHolTestData({
-      id: 1,
-      index: 1,
-      name: answers
-    })); */
     navigate(`/testing`);
   }
 
@@ -54,20 +47,13 @@ const GATBTest = () => {
     case 0:
       currentRender = <IntroCase onPageChange={onPageChange}
         handleStart={handleStart}
-        handleStop={handleStop}
         status={status}
-        />
+      />
       break;
     case 1:
       currentRender = testCase;
       break;
     case 2:
-      currentRender = testCase;
-      break;
-    case 3:
-      currentRender = testCase;
-      break;
-    case 4:
       goToNextTest(answers)
       break;
     default:
@@ -87,12 +73,12 @@ const GATBTest = () => {
           <Step />
         </Steps>
         <div className={style.timer}>
-        <Countdown StatusBoard={StatusBoard}
-          status={status}
+          <Countdown StatusBoard={StatusBoard}
+            status={status}
           />
         </div>
       </div>
-      
+
       {currentRender}
     </div>
   )

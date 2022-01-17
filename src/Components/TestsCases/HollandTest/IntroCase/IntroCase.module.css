@@ -13,7 +13,7 @@
   padding-top: 38px;
   margin-bottom: 30px;
 }
-.answerButton {
+.testInfo .answerButton {
   width: 299px;
   height: 88px;
   font-weight: 500;
@@ -24,9 +24,9 @@
   border-radius: 2px 0px 0px 2px;
   margin-left: 88px;
 }
-.answerButton:hover,
-.answerButton:active,
-.answerButton:focus{
+.testInfo .answerButton:hover,
+.testInfo .answerButton:active,
+.testInfo .answerButton:focus{
   color: #ffffff;
   background: #1890ff;
   cursor: pointer;

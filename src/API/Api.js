@@ -6,7 +6,7 @@ const instance = axios.create({
 
 const authorizedInstance = axios.create({
   baseURL: "https://api.jamskills.ml/api/",
-  /* headers: { Authorization: `Bearer ${localStorage.getItem("userToken")}` } */
+
 })
 
 authorizedInstance.interceptors.request.use(config => {
@@ -28,9 +28,10 @@ export const authAPI = {
       })
   },
   logout() {
-    return (
-      localStorage.removeItem("userToken")
-    )
+    localStorage.removeItem("userToken");
+    localStorage.removeItem("uscPage");
+    localStorage.removeItem("holPage");
+    return;
   },
 
   registration(email, password, first_name, last_name, patronymic) {
@@ -78,10 +79,10 @@ export const testsAPI = {
   },
   sendUscQuizzAnswer(id, index, code) {
     console.log(id, index, code)
-    return authorizedInstance.post(`testingusers/setquizzes/${id}/usk/answers`, {
-      "index" : index,
-      "code" : code
-    })
+    return authorizedInstance.post(`testingusers/setquizzes/${id}/usk/answers`, [{
+      "index": index,
+      "code": code
+    }])
       .then(response => {
         console.log(response);
         return response.data;
@@ -90,7 +91,7 @@ export const testsAPI = {
   sendGatb_5QuizzAnswer(id, result) {
     console.log(id, result)
     return authorizedInstance.post(`testingusers/setquizzes/${id}/gatb_5/answers`, {
-      result
+      "result": result
     })
       .then(response => {
         console.log(response);
